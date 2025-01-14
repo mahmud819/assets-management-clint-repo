@@ -7,6 +7,7 @@ import Register from "../Component/Register/Register";
 import JoinAsEmployee from "../Pages/JoinAsEmployee/JoinAsEmployee";
 import JoinAsHR from "../Pages/JoinAsHR/JoinAsHR";
 import NormalHome from "../Pages/Home/NormalHome/NormalHomePage/NormalHome";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -22,7 +23,17 @@ export const router = createBrowserRouter([
       },
       {
         path: "/joinAsHR",
-        element: <JoinAsHR></JoinAsHR>,
+        element: <PrivateRoute>
+          <JoinAsHR></JoinAsHR>,
+        </PrivateRoute>
+        
+      },
+      {
+        path: "/test",
+        element: <PrivateRoute>
+          <JoinAsHR></JoinAsHR>,
+        </PrivateRoute>
+        
       },
       {
         path: "/login",

@@ -19,8 +19,8 @@ const Navbar = () => {
             <NavLink to='/joinAsHR' className='btn ml-2'>Join as HR Manager</NavLink>
           </li>
           {
-            user&&<li>
-            <NavLink to='/joinAsHR' className='btn ml-2'>test Manager</NavLink>
+            <li>
+            <NavLink to='/test' className='btn ml-2'>test Manager</NavLink>
           </li>
           }
     </>
