@@ -23,9 +23,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "/joinAsHR",
-        element: <PrivateRoute>
+        element: 
           <JoinAsHR></JoinAsHR>,
-        </PrivateRoute>
+        
         
       },
       {
