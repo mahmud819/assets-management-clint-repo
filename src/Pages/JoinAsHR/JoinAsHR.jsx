@@ -18,19 +18,19 @@ const JoinAsHR = () => {
     const companyName = form.companyName.value;
     const profilePhoto = form.profilePhoto.value;
     const companyLogo = form.companyLogo.value;
-    const date = startDate;
+    const birthDay = startDate;
     const email = form.email.value;
     const pakage = form.pakage.value;
     const password = form.password.value;
     const role = 'hr';
-    const formData = {name,companyName,email,role,profilePhoto,companyLogo,date,pakage};
+    const formData = {name,companyName,email,role,profilePhoto,companyLogo,birthDay,pakage};
     console.log('function is working',formData)
     createUser(email,password)
     .then(res=>{
       console.log(res)
       Swal.fire({
-        title: "Well Done!",
-        text: "Your account is created successfuly!",
+        title: "Welcome!",
+        text: "Your are successfuly join as an HR",
         icon: "success"
       });
       axiosHook.post('/users',formData)

@@ -7,13 +7,15 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
+import useAxios from "../../SharedElement/Hooks/useAxios";
 
 const JoinAsEmployee = () => {
   const naviGate = useNavigate();
   const { createUser } = useContext(AuthContext);
+  const axiosHook = useAxios();
   const [startDate, setStartDate] = useState(new Date());
   // console.log(createUser);
-  const handleRegister = (e) => {
+  const handleJoinAsEmployee = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -21,29 +23,31 @@ const JoinAsEmployee = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    console.log(name, email, photo);
-    const newUsers = { name, email, photo };
+    const role = 'employee';
+    const birthDay = startDate;
+    const userData = { name, email, photo,role,birthDay};
+    console.log(userData);
     createUser(email, password)
       .then((res) => {
         console.log(res);
         Swal.fire({
-          title: "Well Done!",
-          text: "Your account is created successfuly!",
+          title: "Welcome!",
+          text: "Your are successfuly join as an Employee",
           icon: "success",
         });
-        // axiosHook.post('/users',newUsers)
-        // .then(res=>{
+        axiosHook.post('/users',userData)
+        .then(res=>{
 
-        //   console.log(res);
-        // })
-        // .catch(err=>{
-        //   console.log(err);
-        //         })
+          console.log(res);
+        })
+        .catch(err=>{
+          console.log(err);
+                })
       })
       .catch((error) => {
         console.log(error.message);
       });
-    naviGate("/login");
+    // naviGate("/login");
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -55,7 +59,7 @@ const JoinAsEmployee = () => {
           <h1 className="text-3xl font-bold text-center pt-4">
             Join As Employee
           </h1>
-          <form onSubmit={handleRegister} className="card-body">
+          <form onSubmit={handleJoinAsEmployee} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
