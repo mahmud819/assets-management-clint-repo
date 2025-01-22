@@ -17,6 +17,9 @@ import MyEmployeeList from "../Pages/HRPages/MyEmployeeList/MyEmployeeList";
 import AddAnEmployee from "../Pages/HRPages/AddAnEmployee/AddAnEmployee";
 import MyRequestedAssets from "../Pages/EmployeePages/MyRequestedAssets/MyRequestedAssets";
 import RequestForAsset from "../Pages/EmployeePages/RequestForAsset/RequestForAsset";
+import MyTeam from "../Pages/EmployeePages/MyTeam/MyTeam.JSX";
+import Profile from "../Pages/Profile/Profile";
+// import MyTeam from "../Pages/EmployeePages/MyTeam/MyTeam.jsx";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -84,6 +87,14 @@ export const router = createBrowserRouter([
       {
         path: "/dashBoard/requestForAsset",
         element: <RequestForAsset></RequestForAsset>,
+      },
+      {
+        path: "/dashBoard/myTeam",
+        element: <MyTeam></MyTeam>,
+      },
+      {
+        path: "/dashBoard/profile",
+        element: <Profile></Profile>,
       },
     ]
   },
