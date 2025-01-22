@@ -6,11 +6,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAxios from "../../SharedElement/Hooks/useAxios";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const JoinAsHR = () => {
   const [startDate, setStartDate] = useState(new Date());
   const axiosHook = useAxios();
   const {createUser} = useContext(AuthContext);
+  const naviGate = useNavigate();
   const handleSignup=e=>{
     e.preventDefault()
     const form = e.target
@@ -45,7 +47,7 @@ const JoinAsHR = () => {
     .catch(error=>{
       console.log(error,error.message);
     })
-    
+    naviGate("/login");
   }
   return (
     <div className="hero bg-base-200 min-h-screen">

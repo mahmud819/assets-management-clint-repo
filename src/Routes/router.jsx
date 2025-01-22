@@ -8,6 +8,15 @@ import JoinAsEmployee from "../Pages/JoinAsEmployee/JoinAsEmployee";
 import JoinAsHR from "../Pages/JoinAsHR/JoinAsHR";
 import NormalHome from "../Pages/Home/NormalHome/NormalHomePage/NormalHome";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import DashBoard from "../SharedElement/DashBoard/DashBoard";
+import Home from "../Pages/Home/Home/Home";
+import AssetsList from "../Pages/HRPages/AssetsList/AssetsList";
+import AddAnAsset from "../Pages/HRPages/AddAnAsset/AddAnAsset";
+import AllRequests from "../Pages/HRPages/AllRequests/AllRequests";
+import MyEmployeeList from "../Pages/HRPages/MyEmployeeList/MyEmployeeList";
+import AddAnEmployee from "../Pages/HRPages/AddAnEmployee/AddAnEmployee";
+import MyRequestedAssets from "../Pages/EmployeePages/MyRequestedAssets/MyRequestedAssets";
+import RequestForAsset from "../Pages/EmployeePages/RequestForAsset/RequestForAsset";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -15,7 +24,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <NormalHome></NormalHome>,
+        element: <Home></Home>,
       },
       {
         path: "/joinAsEmployee",
@@ -25,15 +34,6 @@ export const router = createBrowserRouter([
         path: "/joinAsHR",
         element: 
           <JoinAsHR></JoinAsHR>,
-        
-        
-      },
-      {
-        path: "/test",
-        element: <PrivateRoute>
-          <JoinAsHR></JoinAsHR>,
-        </PrivateRoute>
-        
       },
       {
         path: "/login",
@@ -52,5 +52,39 @@ export const router = createBrowserRouter([
   {
     path: "/footer",
     element: <Footer></Footer>,
+  },
+  {
+    path: "/dashBoard",
+    element: <DashBoard></DashBoard>,
+    children:[
+      {
+        path: "/dashBoard/assetsList",
+        element: <AssetsList></AssetsList>,
+      },
+      {
+        path: "/dashBoard/addAnAsset",
+        element: <AddAnAsset></AddAnAsset>,
+      },
+      {
+        path: "/dashBoard/allRequests",
+        element: <AllRequests></AllRequests>,
+      },
+      {
+        path: "/dashBoard/myEmployeeList",
+        element: <MyEmployeeList></MyEmployeeList>,
+      },
+      {
+        path: "/dashBoard/addAnEmployee",
+        element: <AddAnEmployee></AddAnEmployee>,
+      },
+      {
+        path: "/dashBoard/myRequestedAssets",
+        element: <MyRequestedAssets></MyRequestedAssets>,
+      },
+      {
+        path: "/dashBoard/requestForAsset",
+        element: <RequestForAsset></RequestForAsset>,
+      },
+    ]
   },
 ]);

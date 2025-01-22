@@ -6,7 +6,7 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-// import { updateProfile } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 
 const Login = () => {
     const { userLogin } = useContext(AuthContext);
@@ -19,6 +19,8 @@ const Login = () => {
       const name = form.name.value;
       const email = form.email.value;
       const password = form.password.value;
+      const role = form.role.value.toLowerCase();
+      // console.log(role);
       userLogin(email, password)
         .then((res) => {
           // console.log(res);
@@ -28,20 +30,18 @@ const Login = () => {
                     icon: "success"
                   });
           const user = res.user;
-          // updateProfile(user,{
-          //   displayName: name
-          // })
-          // .then(()=>{
-          //   console.log('user name updated properly',name);
-          // })
-          // .catch(err=>{
-          //   console.log(err,err.message);
-          // })
-          // const newUser = {email : email,name : name}
-          // axios.post('https://volunteer-website-server-mu.vercel.app/jwt',newUser,{withCredentials:true})
-          // .then(res=>{
-          //   console.log(res.data);
-          // })
+          console.log(res.user);
+          updateProfile(user,{
+            displayName: name,
+            providerId: role,
+          })
+          .then(()=>{
+            console.log('user name updated properly',name,role);
+          })
+          .catch(err=>{
+            console.log(err,err.message);
+          })
+        
           
           e.target.reset();
           navigate(location?.state?location.state:'/')
@@ -49,7 +49,7 @@ const Login = () => {
         .catch((error) => {
           console.log(error);
         });
-      console.log({email,password})
+      // console.log({email,password})
     };
     return (
       <div className="hero bg-base-200 min-h-screen">
@@ -101,6 +101,18 @@ const Login = () => {
                   </a>
                 </label>
               </div>
+              <div className="form-control">
+              <label className="label">
+                <span className="label-text">Login As</span>
+              </label>
+              <select  name='role' className="select select-bordered w-full max-w-xs">
+                <option >
+                  Login as HR or Employee
+                </option>
+                <option>HR</option>
+                <option>Employee</option>
+              </select>
+            </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>

@@ -21,11 +21,11 @@ const JoinAsEmployee = () => {
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
-    const photo = form.photo.value;
+    const profilePhoto = form.photo.value;
     const password = form.password.value;
     const role = 'employee';
     const birthDay = startDate;
-    const userData = { name, email, photo,role,birthDay};
+    const userData = { name, email, profilePhoto,role,birthDay};
     console.log(userData);
     createUser(email, password)
       .then((res) => {
@@ -47,7 +47,7 @@ const JoinAsEmployee = () => {
       .catch((error) => {
         console.log(error.message);
       });
-    // naviGate("/login");
+    naviGate("/login");
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
