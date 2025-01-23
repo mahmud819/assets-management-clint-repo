@@ -29,7 +29,7 @@ const JoinAsEmployee = () => {
     console.log(userData);
     createUser(email, password)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         Swal.fire({
           title: "Welcome!",
           text: "Your are successfuly join as an Employee",
@@ -38,11 +38,11 @@ const JoinAsEmployee = () => {
         axiosHook.post('/users',userData)
         .then(res=>{
 
-          console.log(res);
+          // console.log(res);
         })
         .catch(err=>{
           console.log(err);
-                })
+                });
       })
       .catch((error) => {
         console.log(error.message);

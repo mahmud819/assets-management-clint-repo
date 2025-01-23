@@ -32,7 +32,6 @@ const DashBoard = () => {
       </div>
       <div className="w-4/5 bg-gray-300">
         <Outlet></Outlet>
-        <div>this is outlet</div>
       </div>
     </div>
   );
