@@ -1,6 +1,6 @@
 import React from "react";
 
-const DataFilterElement = () => {
+const DataFilterElement = ({button}) => {
   return (
     <div className="p-6">
       <div className="flex justify-evenly">
@@ -37,9 +37,9 @@ const DataFilterElement = () => {
             <option>Non Returnable</option>
           </select>
         </div>
-        <div>
-          <button className="btn btn-primary">Sort by Quantity</button>
-        </div>
+        {button&&<div>
+          <button className="btn btn-primary">{button}</button>
+        </div>}
       </div>
     </div>
   );
