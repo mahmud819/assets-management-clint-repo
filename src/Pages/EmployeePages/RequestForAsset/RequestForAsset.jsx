@@ -7,7 +7,6 @@ import useAxios from "../../../SharedElement/Hooks/useAxios";
 import useUserInfo from "../../../SharedElement/Hooks/useUserInfo";
 import Swal from "sweetalert2";
 
-
 const RequestForAsset = () => {
   const userInfo = useUserInfo();
   const axiosHook = useAxios();
@@ -20,25 +19,38 @@ const RequestForAsset = () => {
   };
   const closeModal = () => setModalOpen(false);
   const [productData] = useAssetsData();
-  
-  const handleProdudctAdd=() =>{
+
+  const handleProdudctAdd = () => {
     const requestedDate = new Date().toLocaleDateString();
-    const productInfo = {data,userInfo,requestedDate}
-    axiosHook.post('/requestedProducts',productInfo)
-    .then(res=>{
-      Swal.fire({
-                title: "Well!",
-                text: "Product request successful",
-                icon: "success",
-              });
-              closeModal();
-      console.log(res.data)
-    })
-    .catch(error=>{
-      console.log(error,error.message);
-    })
+    const productInfo = {
+      productId: data?._id,
+      productName: data?.productName,
+      productType: data?.productType,
+      productQuantity: data?.productQuantity,
+      productAddDate: data?.productAddTime,
+      userName: userInfo?.name,
+      userEmail: userInfo?.email,
+      userRole: userInfo?.role,
+      userMdbId: userInfo?._id,
+      requestedDate,
+    };
+    // console.log(data,userInfo,productInfo)
+    axiosHook
+      .post("/requestedProducts", productInfo)
+      .then((res) => {
+        Swal.fire({
+          title: "Well!",
+          text: "Product request successful",
+          icon: "success",
+        });
+        closeModal();
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error, error.message);
+      });
     // console.log('this product request is working',productInfo);
-  }
+  };
   return (
     <div>
       <div>
@@ -106,7 +118,12 @@ const RequestForAsset = () => {
                     required
                   />
                 </div>
-                <button onClick={handleProdudctAdd}  className="btn btn-primary absolute bottom-2 right-24">Request for product</button>
+                <button
+                  onClick={handleProdudctAdd}
+                  className="btn btn-primary absolute bottom-2 right-24"
+                >
+                  Request for product
+                </button>
               </Modal>
             </div>
           )}
