@@ -1,16 +1,30 @@
-import React from 'react';
-import DataFilterElement from '../../../SharedElement/DataFilerterElement/DataFilterElement';
-import useAssetsData from '../../../SharedElement/Hooks/UseAssetsData/useAssetsData';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import DataFilterElement from "../../../SharedElement/DataFilerterElement/DataFilterElement";
+import useAssetsData from "../../../SharedElement/Hooks/UseAssetsData/useAssetsData";
+import { NavLink, useSearchParams } from "react-router-dom";
+import Modal from "../../../SharedElement/Modal/Modal";
 
 const RequestForAsset = () => {
-    const [productData] = useAssetsData()
-    return (
-        <div>
-            <div>
-                <DataFilterElement></DataFilterElement>
-            </div>
-            <div className="p-4 bg-white rounded-xl mx-2">
+  const [modalOpen, setModalOpen] = useState(false);
+  const [data, setData] = useState({});
+  const openModalWithData = (data) => {
+    setModalOpen(true);
+    // console.log("modal open function is working", data);
+    setData(data);
+  };
+  const closeModal = () => setModalOpen(false);
+  const [productData] = useAssetsData();
+  
+  const handleProdudctAdd=() =>{
+    
+    console.log('this product request is working');
+  }
+  return (
+    <div>
+      <div>
+        <DataFilterElement></DataFilterElement>
+      </div>
+      <div className="p-4 bg-white rounded-xl mx-2">
         <h1 className="text-xl font-bold p-4">
           Total Products : {productData?.length}
         </h1>
@@ -30,37 +44,56 @@ const RequestForAsset = () => {
                     <th>Product Name</th>
                     <th>Product Type</th>
                     <th>Product Availability</th>
-                    
-                    
                   </tr>
                 </thead>
                 <tbody>
                   {productData?.map((data) => (
                     <tr>
                       <td>
-                          <div className="font-bold">{data.productName} </div>
+                        <div className="font-bold">{data.productName} </div>
                       </td>
                       <td>{data.productType}</td>
-                      <td>{data?.productQuantity == 0 ?'Out of Stack':'Avaivable'}</td>
-                      
+                      <td>
+                        {data?.productQuantity == 0
+                          ? "Out of Stack"
+                          : "Avaivable"}
+                      </td>
+
                       <th>
                         <div className="flex">
-                          <button className="btn btn-ghost btn-xs">
+                          <button
+                            onClick={() => openModalWithData(data)}
+                            className="btn btn-outline btn-primary  btn-sm"
+                          >
                             Request for add
                           </button>
-                          
                         </div>
                       </th>
                     </tr>
                   ))}
                 </tbody>
               </table>
+              {/* Open the modal*/}
+              <Modal isOpen={modalOpen} onClose={closeModal}>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-xl">Any Opinion </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Any Opinion Type Here"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <button onClick={handleProdudctAdd}  className="btn btn-primary absolute bottom-2 right-24">Request for product</button>
+              </Modal>
             </div>
           )}
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default RequestForAsset;
