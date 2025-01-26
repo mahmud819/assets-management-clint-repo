@@ -3,8 +3,14 @@ import DataFilterElement from "../../../SharedElement/DataFilerterElement/DataFi
 import useAssetsData from "../../../SharedElement/Hooks/UseAssetsData/useAssetsData";
 import { NavLink, useSearchParams } from "react-router-dom";
 import Modal from "../../../SharedElement/Modal/Modal";
+import useAxios from "../../../SharedElement/Hooks/useAxios";
+import useUserInfo from "../../../SharedElement/Hooks/useUserInfo";
+import Swal from "sweetalert2";
+
 
 const RequestForAsset = () => {
+  const userInfo = useUserInfo();
+  const axiosHook = useAxios();
   const [modalOpen, setModalOpen] = useState(false);
   const [data, setData] = useState({});
   const openModalWithData = (data) => {
@@ -16,8 +22,22 @@ const RequestForAsset = () => {
   const [productData] = useAssetsData();
   
   const handleProdudctAdd=() =>{
-    
-    console.log('this product request is working');
+    const requestedDate = new Date().toLocaleDateString();
+    const productInfo = {data,userInfo,requestedDate}
+    axiosHook.post('/requestedProducts',productInfo)
+    .then(res=>{
+      Swal.fire({
+                title: "Well!",
+                text: "Product request successful",
+                icon: "success",
+              });
+              closeModal();
+      console.log(res.data)
+    })
+    .catch(error=>{
+      console.log(error,error.message);
+    })
+    // console.log('this product request is working',productInfo);
   }
   return (
     <div>
@@ -26,7 +46,7 @@ const RequestForAsset = () => {
       </div>
       <div className="p-4 bg-white rounded-xl mx-2">
         <h1 className="text-xl font-bold p-4">
-          Total Products : {productData?.length}
+          Total Assets : {productData?.length}
         </h1>
         <div>
           {productData?.length == 0 ? (
