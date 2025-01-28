@@ -21,8 +21,8 @@ const DataFilterElement = ({button,productsData,setProductsData,searchBy}) => {
   }
   return (
     <div className="p-6">
-      <div className="flex justify-evenly">
-        <div className="flex ">
+      <div className="flex flex-col gap-y-2 lg:flex lg:flex-row lg:justify-evenly ">
+        <div className="flex">
           <div>
             <label className="input input-bordered flex items-center gap-2">
               <input ref={inputRef} type="text" className="grow" placeholder={searchBy} />

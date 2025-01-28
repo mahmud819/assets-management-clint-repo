@@ -47,7 +47,7 @@ const JoinAsHR = () => {
     .catch(error=>{
       console.log(error,error.message);
     })
-    naviGate("/login");
+    naviGate("/dashBoard/payment");
   }
   const handleSignInGoogle =()=>{
           signInWithGoogle()

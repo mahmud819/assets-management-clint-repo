@@ -8,7 +8,7 @@ const AllRequests = () => {
   console.log(requestedData);
   return (
     <div className="py-4 px-6">
-      <div className="w-3/5 mx-auto">
+      <div className="w-full mx-auto lg:w-3/5">
         <label className="input input-bordered  flex items-center gap-2">
           <input type="text" className="grow" placeholder="Search by requested name or email" />
           <svg
@@ -27,7 +27,7 @@ const AllRequests = () => {
       </div>
       <div className="py-4">
         <h1 className="text-2xl font-bold ">Total Request : {requestedData?.length} </h1>
-        <div className="grid grid-cols-1 bg-white gap-2 p-4 rounded-lg md: grid-cols-2 lg: grid-cols-2">
+        <div className="grid grid-cols-1 bg-white gap-2 p-4 rounded-lg md:grid-cols-2 lg:grid-cols-2">
             {requestedData?.map(data=><AllRequestCard data={data} key={data._id}></AllRequestCard>)}
         </div>
       </div>

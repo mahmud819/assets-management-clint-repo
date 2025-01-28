@@ -54,7 +54,7 @@ const RequestForAsset = () => {
   return (
     <div>
       <div>
-        <DataFilterElement></DataFilterElement>
+        <DataFilterElement searchBy={'Search by Product Name'}></DataFilterElement>
       </div>
       <div className="p-4 bg-white rounded-xl mx-2">
         <h1 className="text-xl font-bold p-4">

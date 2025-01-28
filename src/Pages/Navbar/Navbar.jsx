@@ -90,17 +90,17 @@ const Navbar = () => {
           </ul>
         </div>
         {userInfo?.email&&<div className="avatar">
-          <div className="mask mask-hexagon w-16">
+          <div className="mask mask-hexagon w-8 lg:w-16">
             <img src={userInfo.companyLogo} />
           </div>
         </div>}
-        <a className="btn btn-ghost text-xl font-xtrabold">Assets Manager</a>
+        <a className="btn btn-ghost text-md font-xtrabold lg:text-xl">Assets Manager</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links1}</ul>
       </div>
       <div className="navbar-end">
-        <h1 className="mr-2">{user?.email}</h1>
+        <h1 className="mr-2 hidden text-xsm lg:text-md">{user?.email}</h1>
         {user?.email ? (
           <NavLink onClick={userLogOut} className="btn ">
             Logout

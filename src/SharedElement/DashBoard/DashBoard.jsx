@@ -9,14 +9,14 @@ const DashBoard = () => {
 //   const photo = userInfo[0]?.profilePhoto;
   // console.log(userInfo);
   return (
-    <div className="flex    ">
-      <div className="w-1/5 h-min-scheen bg-red-400">
-          <div className="avatar flex p-6 justify-center">
+    <div className="flex flex-col lg:flex lg:flex-row">
+      <div className="bg-red-400 w-full lg:h-min-scheen lg:w-1/5">
+          <div className="avatar flex p-6 justify-center ">
             <div className="ring-primary  ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
              {<img className="" src={userInfo?.profilePhoto} />}
             </div>
           </div>
-          <div className="flex flex-col gap-y-2 p-4 list-none">
+          <div className="grid grid-cols-2  list-none lg:flex lg:flex-col lg:gap-y-2 lg:p-4">
           {<li className="hover:bg-gray-300 p-2 rounded-xl "><NavLink to='/' className=' ml-2'>Home</NavLink></li>}
           {userInfo?.role=='hr'&&<li className="hover:bg-gray-300 p-2 rounded-xl " ><NavLink to='/dashBoard/assetsList' className=' ml-2'>Assets List</NavLink></li>}
           {userInfo?.role=='employee'&&<li className="hover:bg-gray-300 p-2 rounded-xl " ><NavLink to='/dashBoard/myRequestedAssets' className=' ml-2'>My Requested Assets</NavLink></li>}
@@ -30,7 +30,7 @@ const DashBoard = () => {
           {<li className="hover:bg-gray-300 p-2 rounded-xl "><button onClick={userLogOut}  className=' ml-2'>Logout</button></li>}
           </div>
       </div>
-      <div className="w-4/5 bg-gray-300">
+      <div className="w-full bg-gray-300 lg:w-4/5">
         <Outlet></Outlet>
       </div>
     </div>

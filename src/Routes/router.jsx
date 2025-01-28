@@ -19,6 +19,7 @@ import MyRequestedAssets from "../Pages/EmployeePages/MyRequestedAssets/MyReques
 import RequestForAsset from "../Pages/EmployeePages/RequestForAsset/RequestForAsset";
 import MyTeam from "../Pages/EmployeePages/MyTeam/MyTeam.JSX";
 import Profile from "../Pages/Profile/Profile";
+import Paymant from "../Pages/HRPages/PaymentPage/Paymant";
 // import MyTeam from "../Pages/EmployeePages/MyTeam/MyTeam.jsx";
 export const router = createBrowserRouter([
   {
@@ -58,43 +59,49 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashBoard",
-    element: <DashBoard></DashBoard>,
+    element:<PrivateRoute>
+      <DashBoard></DashBoard>
+    </PrivateRoute> ,
     children:[
       {
         path: "/dashBoard/assetsList",
-        element: <AssetsList></AssetsList>,
+        element: <PrivateRoute><AssetsList></AssetsList></PrivateRoute>,
       },
       {
         path: "/dashBoard/addAnAsset",
-        element: <AddAnAsset></AddAnAsset>,
+        element: <PrivateRoute><AddAnAsset></AddAnAsset></PrivateRoute>,
       },
       {
         path: "/dashBoard/allRequests",
-        element: <AllRequests></AllRequests>,
+        element: <PrivateRoute><AllRequests></AllRequests></PrivateRoute>,
       },
       {
         path: "/dashBoard/myEmployeeList",
-        element: <MyEmployeeList></MyEmployeeList>,
+        element: <PrivateRoute><MyEmployeeList></MyEmployeeList></PrivateRoute>,
       },
       {
         path: "/dashBoard/addAnEmployee",
-        element: <AddAnEmployee></AddAnEmployee>,
+        element: <PrivateRoute><AddAnEmployee></AddAnEmployee></PrivateRoute>,
       },
       {
         path: "/dashBoard/myRequestedAssets",
-        element: <MyRequestedAssets></MyRequestedAssets>,
+        element: <PrivateRoute><MyRequestedAssets></MyRequestedAssets></PrivateRoute>,
       },
       {
         path: "/dashBoard/requestForAsset",
-        element: <RequestForAsset></RequestForAsset>,
+        element: <PrivateRoute><RequestForAsset></RequestForAsset></PrivateRoute>,
       },
       {
         path: "/dashBoard/myTeam",
-        element: <MyTeam></MyTeam>,
+        element: <PrivateRoute><MyTeam></MyTeam></PrivateRoute>,
       },
       {
         path: "/dashBoard/profile",
-        element: <Profile></Profile>,
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
+      },
+      {
+        path: "/dashBoard/payment",
+        element: <PrivateRoute><Paymant></Paymant></PrivateRoute>,
       },
     ]
   },
