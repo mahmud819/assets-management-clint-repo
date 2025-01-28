@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import DataFilterElement from "../../../SharedElement/DataFilerterElement/DataFilterElement";
 import useAssetsData from "../../../SharedElement/Hooks/UseAssetsData/useAssetsData";
 import { NavLink } from "react-router-dom";
 
 const AssetsList = () => {
   const [productData] = useAssetsData();
-
+  const [productsData,setProductsData] = useState(productData)
+  console.log(productsData);
   // console.log(productData,productData?.length);
   return (
     <div>
-      <DataFilterElement button={"Sort by Quantity"}></DataFilterElement>
+      <DataFilterElement key={indexedDB} searchBy={'Search by Item Name'} productsData={productsData} setProductsData = {setProductsData} button={"Sort by Quantity"}></DataFilterElement>
       <div className="p-4 bg-white rounded-xl mx-2">
         <h1 className="text-xl font-bold p-4">
           Total Products : {productData?.length}
@@ -35,7 +36,7 @@ const AssetsList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {productData?.map((data) => (
+                  {productsData?.map((data) => (
                     <tr>
                       <td>
                         <div>

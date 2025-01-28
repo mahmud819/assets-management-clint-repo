@@ -6,7 +6,7 @@ import HRHome from './HRHome/HRHome';
 
 const Home = () => {
     const userInfo= useUserInfo();
-    console.log(userInfo);
+    // console.log(userInfo);
     return (
         <div>
             this is home

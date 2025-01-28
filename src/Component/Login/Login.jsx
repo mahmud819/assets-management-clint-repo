@@ -9,7 +9,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Login = () => {
-    const { userLogin } = useContext(AuthContext);
+    const {userLogin,signInWithGoogle} = useContext(AuthContext);
   
     const navigate = useNavigate();
     const location = useLocation();
@@ -51,6 +51,24 @@ const Login = () => {
         });
       // console.log({email,password})
     };
+    const handleSignInGoogle =()=>{
+      signInWithGoogle()
+      .then(result=>{
+        // console.log(result);
+        if(result.operationType == 'signIn'){
+          Swal.fire({
+            title: 'Welcome!,Welcome!',
+            text: 'Login in with Google Successfuly',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+        }
+        navigate(location?.state?location.state:'/');
+      })
+      .catch(error=>{
+        // console.log(error);
+      })
+    }
     return (
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
@@ -59,6 +77,8 @@ const Login = () => {
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <h1 className="text-3xl font-bold text-center pt-4">Login now!</h1>
+            <button onClick={handleSignInGoogle} className='w-[80%] mx-auto btn mt-2'>Login With Google</button>
+            <h1 className='pt-2 font-bold text-xl text-center'>Or</h1>
             <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
                 <label className="label">

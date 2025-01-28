@@ -1,7 +1,29 @@
 import React from "react";
+import useAxios from "../../../../SharedElement/Hooks/useAxios";
+import Swal from "sweetalert2";
 
 const AllRequestCard = ({ data }) => {
-  console.log(data);
+
+  const axiosHook = useAxios();
+
+    const handleRequestStatus =(id)=>{
+
+      const requestedProducts = {...data, approveStatus: 'approved'}
+      axiosHook.patch(`/requestedProducts/${id}`,requestedProducts)
+      .then(res=>{
+        console.log(res.data)
+        Swal.fire({
+                  title: "Well!",
+                  text: "This product is approved",
+                  icon: "success",
+                });
+      })
+      .catch(err=>{
+        console.log(err, err.message);
+      })
+        console.log('request status',id)
+    }
+  // console.log(data);
   return (
     <div>
       <div className="card bg-neutral text-neutral-content w-96">
@@ -16,7 +38,7 @@ const AllRequestCard = ({ data }) => {
           <h2 className="text-md fond-bold text-left">Requester Status : {data?.userRole}</h2>
           
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Approve</button>
+            <button onClick={()=>handleRequestStatus(data._id)} className="btn btn-primary ">Approve</button>
             <button className="btn btn-primary">Reject</button>
           </div>
         </div>

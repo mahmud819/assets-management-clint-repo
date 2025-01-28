@@ -1,9 +1,11 @@
 import React from "react";
 import useAxios from "../../../SharedElement/Hooks/useAxios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddAnAsset = () => {
   const axioshook = useAxios();
+  const navigate = useNavigate();
 
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const AddAnAsset = () => {
     // console.log('product is added sucess',productData);
     axioshook.post("/products", productAddData).then((res) => {
       console.log(res.data);
-      if(insertedId){
+      
         Swal.fire({
             title: "Well!",
             text: "Product add successful",
@@ -30,7 +32,8 @@ const AddAnAsset = () => {
           });
       }
       
-    });
+    );
+    navigate('/dashBoard/assetsList');
   };
   return (
     <div>

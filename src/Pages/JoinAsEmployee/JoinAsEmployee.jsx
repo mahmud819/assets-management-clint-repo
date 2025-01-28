@@ -4,15 +4,17 @@ import lottieData from "../../assets/Lottie/register.json";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 // import useAxiosHooks from "../Hooks/useAxiosHooks";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import useAxios from "../../SharedElement/Hooks/useAxios";
 
 const JoinAsEmployee = () => {
   const naviGate = useNavigate();
-  const { createUser } = useContext(AuthContext);
+  const { createUser,signInWithGoogle } = useContext(AuthContext);
   const axiosHook = useAxios();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [startDate, setStartDate] = useState(new Date());
   // console.log(createUser);
   const handleJoinAsEmployee = (e) => {
@@ -49,6 +51,24 @@ const JoinAsEmployee = () => {
       });
     naviGate("/login");
   };
+  const handleSignInGoogle =()=>{
+        signInWithGoogle()
+        .then(result=>{
+          // console.log(result);
+          if(result.operationType == 'signIn'){
+            Swal.fire({
+              title: 'Welcome!,Welcome!',
+              text: 'Login in with Google Successfuly',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            })
+          }
+          navigate(location?.state?location.state:'/');
+        })
+        .catch(error=>{
+          // console.log(error);
+        })
+      }
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -59,6 +79,8 @@ const JoinAsEmployee = () => {
           <h1 className="text-3xl font-bold text-center pt-4">
             Join As Employee
           </h1>
+          <button onClick={handleSignInGoogle} className='w-[80%] mx-auto btn mt-2'>Login With Google</button>
+            <h1 className='pt-2 font-bold text-xl text-center'>Or</h1>
           <form onSubmit={handleJoinAsEmployee} className="card-body">
             <div className="form-control">
               <label className="label">

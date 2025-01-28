@@ -1,46 +1,67 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import '../../App.css'
+import "../../App.css";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import useAxios from "../../SharedElement/Hooks/useAxios";
+import useUserInfo from "../../SharedElement/Hooks/useUserInfo";
 
 const Navbar = () => {
 
-  const {user,userLogOut,setLoading}=useContext(AuthContext);
-  const  axiosHook = useAxios();
-  const [loginUser,setLoginUser]=useState();
-  useEffect(()=>{
+  const { user, userLogOut, setLoading } = useContext(AuthContext);
+  const userInfo = useUserInfo();
+  const axiosHook = useAxios();
+  const [loginUser, setLoginUser] = useState();
+  useEffect(() => {
     setLoading(true);
-    axiosHook.get('/users')
-    .then(res=>{
-      // console.log(res.data);
-      const data = res?.data.filter(d=>d?.email==user?.email);
-      // console.log(data);
-      setLoginUser(data);
-    })
-    .catch(err=>{
-      console.log(err,err?.message)
-    })
+    axiosHook
+      .get("/users")
+      .then((res) => {
+        // console.log(res.data);
+        const data = res?.data.filter((d) => d?.email == user?.email);
+        // console.log(data);
+        setLoginUser(data);
+      })
+      .catch((err) => {
+        console.log(err, err?.message);
+      });
     setLoading(false);
+  }, [user?.email]);
 
-  },[user?.email])
-  
   // console.log(user,loginUser);
-    
-    const links1 = <>
-        <li><NavLink to='/' className='btn '>Home</NavLink></li>
 
-        {!user?.email&&<li><NavLink to='/joinAsEmployee' className='btn ml-2'>Join as Employee</NavLink></li>}
-        {!user?.email&&<li><NavLink to='/joinAsHR' className='btn ml-2'>Join as HR Manager</NavLink></li>}
-        
-          {user?.email&&
-            <li>
-            <NavLink to='/dashBoard' className='btn ml-2'>DashBoard</NavLink>
-          </li>
-          }
+  const links1 = (
+    <>
+      <li>
+        <NavLink to="/" className="btn ">
+          Home
+        </NavLink>
+      </li>
+
+      {!user?.email && (
+        <li>
+          <NavLink to="/joinAsEmployee" className="btn ml-2">
+            Join as Employee
+          </NavLink>
+        </li>
+      )}
+      {!user?.email && (
+        <li>
+          <NavLink to="/joinAsHR" className="btn ml-2">
+            Join as HR Manager
+          </NavLink>
+        </li>
+      )}
+
+      {user?.email && (
+        <li>
+          <NavLink to="/dashBoard" className="btn ml-2">
+            DashBoard
+          </NavLink>
+        </li>
+      )}
     </>
-        
-    
+  );
+// console.log(userInfo,userInfo.companyLogo);
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -68,20 +89,30 @@ const Navbar = () => {
             {links1}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        {userInfo?.email&&<div className="avatar">
+          <div className="mask mask-hexagon w-16">
+            <img src={userInfo.companyLogo} />
+          </div>
+        </div>}
+        <a className="btn btn-ghost text-xl font-xtrabold">Assets Manager</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links1}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links1}</ul>
       </div>
       <div className="navbar-end">
-        <h1 className="mr-2" >{user?.email}</h1>
-        {user?.email?<NavLink onClick={userLogOut} className="btn ">Logout</NavLink>:<div>
-          <NavLink to='/login' className="btn ">Login</NavLink>
-          {/* <NavLink to='/register' className="btn ml-2">Register</NavLink> */}
-          </div>}
-        
+        <h1 className="mr-2">{user?.email}</h1>
+        {user?.email ? (
+          <NavLink onClick={userLogOut} className="btn ">
+            Logout
+          </NavLink>
+        ) : (
+          <div>
+            <NavLink to="/login" className="btn ">
+              Login
+            </NavLink>
+            {/* <NavLink to='/register' className="btn ml-2">Register</NavLink> */}
+          </div>
+        )}
       </div>
     </div>
   );

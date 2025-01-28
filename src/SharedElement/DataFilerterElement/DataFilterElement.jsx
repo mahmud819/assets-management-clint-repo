@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useRef } from "react";
+import useAxios from "../Hooks/useAxios";
 
-const DataFilterElement = ({button}) => {
+const DataFilterElement = ({button,productsData,setProductsData,searchBy}) => {
+  
+  const inputRef = useRef();
+  const axiosHook = useAxios();
+
+  const handleSearch =()=>{
+    const inputValue = inputRef.current.value.toLowerCase();
+
+    axiosHook.get(`/products?productName=inputValue`)
+    .then(res=>{
+      console.log(res.data)
+      setProductsData(res.data);
+    })
+    .catch(err=>{
+      console.log(err,err.message)
+    })
+    // console.log('handle search is working','input value',inputRef.current.value,);
+  }
   return (
     <div className="p-6">
       <div className="flex justify-evenly">
         <div className="flex ">
           <div>
             <label className="input input-bordered flex items-center gap-2">
-              <input type="text" className="grow" placeholder="Search by Name" />
-              <svg
+              <input ref={inputRef} type="text" className="grow" placeholder={searchBy} />
+              <svg onClick={handleSearch}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
                 fill="currentColor"
@@ -21,9 +39,6 @@ const DataFilterElement = ({button}) => {
                 />
               </svg>
             </label>
-          </div>
-          <div>
-            <button className="btn">Search</button>
           </div>
         </div>
         <div>
