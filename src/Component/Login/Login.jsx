@@ -7,12 +7,14 @@ import Swal from 'sweetalert2';
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import useAxios from "../../SharedElement/Hooks/useAxios";
 
 const Login = () => {
     const {userLogin,signInWithGoogle} = useContext(AuthContext);
   
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosHook = useAxios();
     const handleLogin = (e) => {
       e.preventDefault();
       const form = e.target;
@@ -29,11 +31,16 @@ const Login = () => {
                     text: "Login successfull!",
                     icon: "success"
                   });
-          const user = res.user;
+                  const user = res?.user?.email;
+        axiosHook.post('/jwt',user,{withCredentials:true})
+        .then(res=>{
+        console.log(res.data);
+                })        
+          
           console.log(res.user);
           updateProfile(user,{
             displayName: name,
-            providerId: role,
+            
           })
           .then(()=>{
             console.log('user name updated properly',name,role);
@@ -42,7 +49,7 @@ const Login = () => {
             console.log(err,err.message);
           })
         
-          
+
           e.target.reset();
           navigate(location?.state?location.state:'/')
         })
