@@ -8,7 +8,7 @@ const NormalHome = () => {
     const{user} = useContext(AuthContext);
     return (
         <div>
-            {user?.email&&<NormalBanner></NormalBanner>}
+            {!user?.email&&<NormalBanner></NormalBanner>}
         </div>
     );
 };
