@@ -78,11 +78,11 @@ const Login = () => {
     }
     return (
       <div className="bg-base-200 min-h-screen">
-        <div className="flex justify-center items-center flex-col lg:flex-row-reverse  lg:p-2">
+        <div className="flex justify-center items-center flex-col lg:flex-row-reverse  lg:p-4">
           <div className="text-center lg:text-left lg:ml-4">
             <Lottie animationData={signInLottie}></Lottie>
           </div>
-          <div className="bg-base-100 w-full max-w-md shrink-0 shadow-2xl rounded-lg lg:py-2 px-4">
+          <div className="bg-base-100 w-full max-w-md shrink-0 shadow-2xl rounded-lg p2 lg:p-4">
             <h1 className="text-2xl  font-bold text-center">Login now</h1>
             <button onClick={handleSignInGoogle} className='w-[100%] mx-auto btn mt-2'>Login With Google</button>
             <h1 className=' font-bold text-xl text-center pt-2'>Or</h1>
@@ -95,7 +95,7 @@ const Login = () => {
                   type="text"
                   placeholder="User Name"
                   name="name"
-                  className="input input-bordered"
+                  className="input input-bordered input-sm"
                   required
                 />
               </div>
@@ -107,7 +107,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   placeholder="email"
-                  className="input input-bordered"
+                  className="input input-bordered input-sm"
                   required
                 />
               </div>
@@ -119,7 +119,7 @@ const Login = () => {
                   type="password"
                   name="password"
                   placeholder="password"
-                  className="input input-bordered"
+                  className="input input-bordered input-sm"
                   required
                 />
                 <label className="label">
@@ -143,7 +143,7 @@ const Login = () => {
             </div> */}
 
               <div className="form-control">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary btn-sm text-large">Login</button>
               </div>
             </form>
           </div>
