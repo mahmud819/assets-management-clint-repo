@@ -77,16 +77,16 @@ const Login = () => {
       })
     }
     return (
-      <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
+      <div className="bg-base-200 min-h-screen">
+        <div className="flex justify-center items-center flex-col lg:flex-row-reverse  lg:p-2">
+          <div className="text-center lg:text-left lg:ml-4">
             <Lottie animationData={signInLottie}></Lottie>
           </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <h1 className="text-3xl font-bold text-center pt-4">Login now!</h1>
-            <button onClick={handleSignInGoogle} className='w-[80%] mx-auto btn mt-2'>Login With Google</button>
-            <h1 className='pt-2 font-bold text-xl text-center'>Or</h1>
-            <form onSubmit={handleLogin} className="card-body">
+          <div className="bg-base-100 w-full max-w-md shrink-0 shadow-2xl rounded-lg lg:py-2 px-4">
+            <h1 className="text-2xl  font-bold text-center">Login now</h1>
+            <button onClick={handleSignInGoogle} className='w-[100%] mx-auto btn mt-2'>Login With Google</button>
+            <h1 className=' font-bold text-xl text-center pt-2'>Or</h1>
+            <form onSubmit={handleLogin} className="flex flex-col rounded-lg">
             <div className="form-control">
                 <label className="label">
                   <span className="label-text">User Name</span>
@@ -128,7 +128,8 @@ const Login = () => {
                   </a>
                 </label>
               </div>
-              <div className="form-control">
+
+              {/* <div className="form-control">
               <label className="label">
                 <span className="label-text">Login As</span>
               </label>
@@ -139,8 +140,9 @@ const Login = () => {
                 <option>HR</option>
                 <option>Employee</option>
               </select>
-            </div>
-              <div className="form-control mt-6">
+            </div> */}
+
+              <div className="form-control">
                 <button className="btn btn-primary">Login</button>
               </div>
             </form>

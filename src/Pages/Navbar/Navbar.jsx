@@ -63,7 +63,7 @@ const Navbar = () => {
   );
 // console.log(userInfo,userInfo.companyLogo);
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-[#9D214F]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

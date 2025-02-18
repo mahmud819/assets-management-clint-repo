@@ -5,7 +5,7 @@ import Footer from '../Pages/Footer/Footer';
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className='bg-gradient-to-r '>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>
