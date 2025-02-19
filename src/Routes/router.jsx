@@ -20,18 +20,20 @@ import RequestForAsset from "../Pages/EmployeePages/RequestForAsset/RequestForAs
 import MyTeam from "../Pages/EmployeePages/MyTeam/MyTeam.JSX";
 import Profile from "../Pages/Profile/Profile";
 import Paymant from "../Pages/HRPages/PaymentPage/Paymant";
+import Error from "../Pages/Error/Error";
 // import MyTeam from "../Pages/EmployeePages/MyTeam/MyTeam.jsx";
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<Error></Error>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
       },
       {
-        path: "/joinAsEmployee",
+        path: "/joinAsEmployee/add",
         element: <JoinAsEmployee></JoinAsEmployee>,
       },
       {
@@ -59,12 +61,14 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashBoard",
-    element:<PrivateRoute>
+    element:<PrivateRoute>,
+
       <DashBoard></DashBoard>
     </PrivateRoute> ,
+    errorElement:<Error></Error>,
     children:[
       {
-        path: "/dashBoard/assetsList",
+        path: "/dashBoard/",
         element: <PrivateRoute><AssetsList></AssetsList></PrivateRoute>,
       },
       {

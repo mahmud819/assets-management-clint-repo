@@ -10,7 +10,7 @@ const DashBoard = () => {
   // console.log(userInfo);
   return (
     <div className="flex flex-col lg:flex lg:flex-row">
-      <div className="bg-red-400 w-full lg:h-min-scheen lg:w-1/5">
+      <div className="bg-[#8b2181] w-full lg:h-min-scheen text-white lg:w-1/5">
           <div className="avatar flex p-6 justify-center ">
             <div className="ring-primary  ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
              {<img className="" src={userInfo?.profilePhoto} />}
@@ -18,7 +18,7 @@ const DashBoard = () => {
           </div>
           <div className="grid grid-cols-2  list-none lg:flex lg:flex-col lg:gap-y-2 lg:p-4">
           {<li className="hover:bg-gray-300 p-2 rounded-xl "><NavLink to='/' className=' ml-2'>Home</NavLink></li>}
-          {userInfo?.role=='hr'&&<li className="hover:bg-gray-300 p-2 rounded-xl " ><NavLink to='/dashBoard/assetsList' className=' ml-2'>Assets List</NavLink></li>}
+          {userInfo?.role=='hr'&&<li className="hover:bg-gray-300 p-2 rounded-xl " ><NavLink to='/dashBoard/' className=' ml-2'>Assets List</NavLink></li>}
           {userInfo?.role=='employee'&&<li className="hover:bg-gray-300 p-2 rounded-xl " ><NavLink to='/dashBoard/myRequestedAssets' className=' ml-2'>My Requested Assets</NavLink></li>}
           {userInfo?.role=='employee'&&<li className="hover:bg-gray-300 p-2 rounded-xl " ><NavLink to='/dashBoard/requestForAsset' className=' ml-2'>Request for an Asset</NavLink></li>}
           {userInfo?.role=='employee'&&<li className="hover:bg-gray-300 p-2 rounded-xl " ><NavLink to='/dashBoard/myTeam' className=' ml-2'>My Team</NavLink></li>}

@@ -9,7 +9,7 @@ const Home = () => {
     // console.log(userInfo);
     return (
         <div>
-            {!userInfo&&<NormalHome></NormalHome>}
+            {!userInfo && <NormalHome></NormalHome>}
             {userInfo?.role == 'employee'&&<EmployeeHome></EmployeeHome>}
             {userInfo?.role == 'hr'&&<HRHome></HRHome>}
         </div>

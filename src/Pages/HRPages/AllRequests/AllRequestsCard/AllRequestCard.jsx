@@ -26,7 +26,7 @@ const AllRequestCard = ({ data }) => {
   // console.log(data);
   return (
     <div>
-      <div className="card bg-neutral text-neutral-content w-60% lg:w-full">
+      <div className="card bg-[#7D214F] text-neutral-content w-60% lg:w-full">
         <div className="card-body">
           <h2 className="text-md fond-bold text-left">Product Name : {data?.productName} </h2>
           <h2 className="text-md fond-bold text-left">Product Type : {data?.productType} </h2>

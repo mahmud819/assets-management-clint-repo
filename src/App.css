@@ -1,6 +1,6 @@
-.active{
+/* .active{
   background-color: royalblue;
-}
+} */
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -131,3 +131,22 @@ body {
 .arrow--disabled {
   fill: rgba(255, 255, 255, 0.5);
 }
+.custom-btn{
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  padding: 8px 16px ;
+  color: white;
+  font-size: 16px;
+  /* background-color: #97219b; */
+  /* background-color: #cf2be1c8; */
+  background-color: #9b2181;
+  /* border-radius: 16px; */
+}
+.custom-btn:hover{
+  background-color: #fff;
+  color: #000;
+  font-size: 18px;
+}
+/* .active{
+  background-color: #5f2d74;
+} */

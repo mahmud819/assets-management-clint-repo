@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../../App.css";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import useAxios from "../../SharedElement/Hooks/useAxios";
@@ -32,21 +32,21 @@ const Navbar = () => {
   const links1 = (
     <>
       <li>
-        <NavLink to="/" className="btn ">
+        <NavLink to="/" className="custom-btn">
           Home
         </NavLink>
       </li>
 
       {!user?.email && (
         <li>
-          <NavLink to="/joinAsEmployee" className="btn ml-2">
+          <NavLink to="/joinAsEmployee" className="custom-btn ml-2">
             Join as Employee
           </NavLink>
         </li>
       )}
       {!user?.email && (
         <li>
-          <NavLink to="/joinAsHR" className="btn ml-2">
+          <NavLink to="/joinAsHR" className="custom-btn ml-2">
             Join as HR Manager
           </NavLink>
         </li>
@@ -54,7 +54,7 @@ const Navbar = () => {
 
       {user?.email && (
         <li>
-          <NavLink to="/dashBoard" className="btn ml-2">
+          <NavLink to="/dashBoard" className="custom-btn ml-2">
             DashBoard
           </NavLink>
         </li>
@@ -63,7 +63,7 @@ const Navbar = () => {
   );
 // console.log(userInfo,userInfo.companyLogo);
   return (
-    <div className="navbar bg-[#9D214F]">
+    <div className="navbar bg-gradient-to-r from-[#5D214F] via-[#6D214F] to-[#9D214F]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -90,11 +90,11 @@ const Navbar = () => {
           </ul>
         </div>
         {userInfo?.email&&<div className="avatar">
-          <div className="mask mask-hexagon w-8 lg:w-16">
+          <div className="mask mask-hexagon w-8 lg:w-14">
             <img src={userInfo.companyLogo} />
           </div>
         </div>}
-        <a className="btn btn-ghost text-md font-xtrabold lg:text-xl">Assets Manager</a>
+        <Link to='/' className="btn btn-ghost text-md font-xtrabold text-white lg:text-xl">Assets Manager</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links1}</ul>
@@ -102,12 +102,12 @@ const Navbar = () => {
       <div className="navbar-end">
         <h1 className="mr-2 hidden text-xsm lg:text-md">{user?.email}</h1>
         {user?.email ? (
-          <NavLink onClick={userLogOut} className="btn ">
+          <NavLink onClick={userLogOut} className="custom-btn ">
             Logout
           </NavLink>
         ) : (
           <div>
-            <NavLink to="/login" className="btn ">
+            <NavLink to="/login" className="custom-btn">
               Login
             </NavLink>
             {/* <NavLink to='/register' className="btn ml-2">Register</NavLink> */}

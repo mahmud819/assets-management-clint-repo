@@ -21,8 +21,8 @@ const Login = () => {
       const name = form.name.value;
       const email = form.email.value;
       const password = form.password.value;
-      const role = form.role.value.toLowerCase();
-      // console.log(role);
+      // const role = form.role.value.toLowerCase();
+      console.log(name,email);
       userLogin(email, password)
         .then((res) => {
           // console.log(res);

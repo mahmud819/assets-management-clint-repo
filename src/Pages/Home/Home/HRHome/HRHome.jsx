@@ -2,7 +2,7 @@ import React from "react";
 
 const HRHome = () => {
   return (
-    <div className="p-4">
+    <div className="p-4 text-white">
       <div role="tablist" className="tabs tabs-lifted">
         <input
           type="radio"
@@ -13,7 +13,7 @@ const HRHome = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+          className="tab-content bg-base-100 border-base-300 rounded-box p-6 text-white"
         >
           Pending requests
         </div>
