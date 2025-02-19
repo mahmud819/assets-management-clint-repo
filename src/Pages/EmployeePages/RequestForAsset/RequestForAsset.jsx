@@ -56,6 +56,7 @@ const RequestForAsset = () => {
       <div>
         <DataFilterElement searchBy={'Search by Product Name'}></DataFilterElement>
       </div>
+
       <div className="p-4 bg-white rounded-xl mx-2">
         <h1 className="text-xl font-bold p-4">
           Total Assets : {productData?.length}
@@ -129,6 +130,7 @@ const RequestForAsset = () => {
           )}
         </div>
       </div>
+      
     </div>
   );
 };
