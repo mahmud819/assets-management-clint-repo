@@ -8,20 +8,34 @@ const AllRequestCard = ({ data }) => {
 
     const handleRequestStatus =(id)=>{
 
-      const requestedProducts = {...data, approveStatus: 'approved'}
-      axiosHook.patch(`/requestedProducts/${id}`,requestedProducts)
-      .then(res=>{
-        console.log(res.data)
-        Swal.fire({
-                  title: "Well!",
-                  text: "This product is approved",
-                  icon: "success",
-                });
-      })
-      .catch(err=>{
-        console.log(err, err.message);
-      })
-        console.log('request status',id)
+      // const requestedProducts = {...data, approveStatus: 'approved'}
+      Swal.fire({
+        title: "Are you sure to aprove this product?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, approve it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axiosHook.patch(`/requestedProducts/${id}`)
+          .then(res=>{
+            if(res.data.modifiedCount){
+              Swal.fire({
+                title: "Well!",
+                text: "This product is approved.",
+                icon: "success"
+              });
+            }
+            console.log(res.data.modifiedCount)
+          })
+          .catch(err=>{
+            console.log(err, err.message);
+          })
+          
+        }
+      });
     }
   // console.log(data);
   return (

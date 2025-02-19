@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/joinAsEmployee/add",
+        path: "/joinAsEmployee",
         element: <JoinAsEmployee></JoinAsEmployee>,
       },
       {
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashBoard",
-    element:<PrivateRoute>,
+    element:<PrivateRoute>
 
       <DashBoard></DashBoard>
     </PrivateRoute> ,
