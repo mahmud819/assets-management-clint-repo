@@ -46,7 +46,7 @@ const MyRequestedAssets = () => {
           </select>
         </div>
       </div>
-      <div className="p-4 bg-white rounded-xl mx-4">
+      <div className="p-4 bg-white rounded-xl mt-4 mx-4">
         <h1 className="text-xl font-bold p-4">
           Total Products : {requestedProduct?.length}
         </h1>

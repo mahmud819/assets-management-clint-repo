@@ -57,8 +57,8 @@ body {
   background: rgb(64, 255, 242);
   background: linear-gradient(
     128deg,
-    rgba(64, 255, 242, 1) 0%,
-    rgba(63, 188, 255, 1) 100%
+    #40fff2 0%,
+    #3fbcff 100%
   );
 }
 
@@ -150,3 +150,11 @@ body {
 /* .active{
   background-color: #5f2d74;
 } */
+
+.active{
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #f2ecec;
+  
+  /* padding: 5px 10px; */
+}
