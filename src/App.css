@@ -132,20 +132,22 @@ body {
   fill: rgba(255, 255, 255, 0.5);
 }
 .custom-btn{
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+  /* border-top: 2px solid white; */
+  /* border-bottom: 2px solid white; */
   padding: 8px 16px ;
-  color: white;
+  /* color: white; */
   font-size: 16px;
   /* background-color: #97219b; */
   /* background-color: #cf2be1c8; */
-  background-color: #9b2181;
+  /* background-color: #9b2181; */
   /* border-radius: 16px; */
+  border: 2px solid #70cae5f6;
+  border-radius: 15px;
 }
 .custom-btn:hover{
-  background-color: #fff;
+  background-color: #f6f1f1;
   color: #000;
-  font-size: 18px;
+  font-size: 16px;
 }
 /* .active{
   background-color: #5f2d74;
@@ -154,7 +156,7 @@ body {
 .active{
   border-top: 1px solid;
   border-bottom: 1px solid;
-  border-color: #f2ecec;
+  border: none;
   
   /* padding: 5px 10px; */
 }

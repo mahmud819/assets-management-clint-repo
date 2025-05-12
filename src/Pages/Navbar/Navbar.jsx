@@ -63,7 +63,7 @@ const Navbar = () => {
   );
 // console.log(userInfo,userInfo.companyLogo);
   return (
-    <div className="navbar bg-gradient-to-r from-[#5D214F] via-[#6D214F] to-[#9D214F]">
+    <div className="navbar fixed top-0 z-20 backdrop-blur-lg border border-white/30 bg-[rgb(19, 15, 64)] ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -89,12 +89,17 @@ const Navbar = () => {
             {links1}
           </ul>
         </div>
+        {<div>
+           <div className="w-20 h-20">
+             <img className="w-[200%] h-[100%]" src="https://i.ibb.co.com/q3Kk2v1x/freepik-gradient-geometric-accounting-company-logo-20250512161313r-ZLD.png" alt="" />
+             {/* <Link to='/' className="btn btn-ghost text-md font-xtrabold text-white lg:text-xl">Assets Manager</Link> */}
+           </div>
+          </div>}
         {userInfo?.email&&<div className="avatar">
           <div className="mask mask-hexagon w-8 lg:w-14">
             <img src={userInfo.companyLogo} />
           </div>
         </div>}
-        <Link to='/' className="btn btn-ghost text-md font-xtrabold text-white lg:text-xl">Assets Manager</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links1}</ul>
