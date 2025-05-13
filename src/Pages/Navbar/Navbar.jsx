@@ -89,12 +89,12 @@ const Navbar = () => {
             {links1}
           </ul>
         </div>
-        {<div>
+        {!userInfo?.email&& 
            <div className="w-20 h-20">
-             <img className="w-[200%] h-[100%]" src="https://i.ibb.co.com/q3Kk2v1x/freepik-gradient-geometric-accounting-company-logo-20250512161313r-ZLD.png" alt="" />
+             <img className="w-[100%] h-[100%]" src="https://i.ibb.co/Rpqk8JZL/freepik-20250512235446-E0-Yy.png" alt="" />
              {/* <Link to='/' className="btn btn-ghost text-md font-xtrabold text-white lg:text-xl">Assets Manager</Link> */}
            </div>
-          </div>}
+          }
         {userInfo?.email&&<div className="avatar">
           <div className="mask mask-hexagon w-8 lg:w-14">
             <img src={userInfo.companyLogo} />
@@ -107,7 +107,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <h1 className="mr-2 hidden text-xsm lg:text-md">{user?.email}</h1>
         {user?.email ? (
-          <NavLink onClick={userLogOut} className="custom-btn ">
+          <NavLink onClick={userLogOut} className="custom-btn">
             Logout
           </NavLink>
         ) : (
